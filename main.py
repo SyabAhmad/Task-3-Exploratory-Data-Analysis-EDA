@@ -24,13 +24,14 @@ print(encodedData.head(5))
 SalesAndQuantity = pd.DataFrame(data[["Sales", "Quantity"]])
 print(SalesAndQuantity.head(5))
 
-plt.plot(SalesAndQuantity)
-plt.xlabel("Sales")
-plt.ylabel("Quantity")
-plt.show()
+# plt.plot(SalesAndQuantity)
+# plt.xlabel("Sales")
+# plt.ylabel("Quantity")
+# plt.show()
+# Graph buy Category and sale
 
+CategoryAndSale = pd.concat([encodedData["Category"], data["Sales"]], axis=1)
 
-CategoryAndSale = pd.DataFrame([[encodedData["Category"], data["Sales"].astype(int)]])
 print(CategoryAndSale.head(5))
 
 plt.plot(CategoryAndSale)
@@ -38,11 +39,9 @@ plt.xlabel("Category")
 plt.ylabel("Sales")
 plt.show()
 
-CategoryAndSale = pd.DataFrame([[encodedData["Category"], data["Sales"]]])
-print(CategoryAndSale.head(5))
-
-plt.scatter(encodedData["Category"], encodedData["Sales"])
-
-salesAccordingToRegion = encodedData[["Region", "Sales"]]
-plt.scatter(encodedData["Region"], data["Sales"].astype(int))
+plt.scatter(encodedData["Category"], data["Sales"])
 plt.show()
+
+# salesAccordingToRegion = encodedData[["Region", "Sales"]]
+# plt.scatter(encodedData["Region"], data["Sales"].astype(int))
+# plt.show()
