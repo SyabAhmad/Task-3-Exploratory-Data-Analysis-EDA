@@ -15,7 +15,7 @@ print(data.shape)
 print(data.isna().sum())
 
 print(data.dtypes)
-objectData = data
+objectData = data[["Country", "City", "State", "Region", "Category", "Sub-Category"]]
 LabelEncoder = LabelEncoder()
 encodedData = objectData.apply(LabelEncoder.fit_transform)
 print(encodedData.dtypes)
@@ -30,7 +30,7 @@ plt.ylabel("Quantity")
 plt.show()
 
 
-CategoryAndSale = encodedData[["Category", "Sales"]]
+CategoryAndSale = pd.DataFrame([[encodedData["Category"], data["Sales"].astype(int)]])
 print(CategoryAndSale.head(5))
 
 plt.plot(CategoryAndSale)
@@ -38,8 +38,11 @@ plt.xlabel("Category")
 plt.ylabel("Sales")
 plt.show()
 
-CategoryAndSale = encodedData[["Category", "Sales"]]
+CategoryAndSale = pd.DataFrame([[encodedData["Category"], data["Sales"]]])
 print(CategoryAndSale.head(5))
 
 plt.scatter(encodedData["Category"], encodedData["Sales"])
 
+salesAccordingToRegion = encodedData[["Region", "Sales"]]
+plt.scatter(encodedData["Region"], data["Sales"].astype(int))
+plt.show()
